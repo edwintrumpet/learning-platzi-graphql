@@ -2,13 +2,17 @@
   "name": "platzi-dir",
   "version": "1.0.0",
   "description": "Proyecto de aprendizaje en el Curso básico de GrahpQL de Platzi",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "graphql"
   ],
   "author": "Edwin García <spark.com.co@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "graphql": "^15.0.0"
+  }
 }
