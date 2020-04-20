@@ -18,7 +18,7 @@ async function connectDB() {
 
     let client
     try {
-        client = await MongoClient.connect(mongoUrl, { useNewUrlParser: true })
+        client = await MongoClient.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
         connection = client.db(DB_NAME)
     }catch(err){
         console.log('Could not connect to db', mongoUrl, err)
