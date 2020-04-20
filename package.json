@@ -4,6 +4,8 @@
   "description": "Proyecto de aprendizaje en el Curso básico de GrahpQL de Platzi",
   "main": "src/index.js",
   "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix",
     "start": "node src/index.js",
     "start:dev": "nodemon -e js,graphql src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,6 +21,7 @@
     "graphql": "^15.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "standard": "^14.3.3"
   }
 }
