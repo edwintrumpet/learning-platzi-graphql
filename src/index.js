@@ -6,6 +6,7 @@ const { readFileSync } = require('fs')
 const { join } = require('path')
 const { makeExecutableSchema } = require('graphql-tools')
 const resolvers = require('./lib/resolvers')
+require('dotenv').config()
 
 const app = express()
 const port = process.env.PORT || 3000
