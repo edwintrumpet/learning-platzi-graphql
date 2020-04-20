@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
+    "start:dev": "nodemon -e js,graphql src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,6 +14,11 @@
   "author": "Edwin García <spark.com.co@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
     "graphql": "^15.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }
