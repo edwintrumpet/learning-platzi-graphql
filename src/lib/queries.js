@@ -27,26 +27,26 @@ module.exports ={
         }
         return course
     },
-    getStudents: async () => {
+    getPeople: async () => {
         let db
-        let students = []
+        let people = []
         try {
             db = await connectDb()
-            students = await db.collection('students').find().toArray()
+            people = await db.collection('students').find().toArray()
         } catch(err) {
             errorHandler(err)
         }
-        return students
+        return people
     },
-    getStudent: async (_, { id }) => {
+    getPerson: async (_, { id }) => {
         let db
-        let student
+        let person
         try {
             db = await connectDb()
-            student = await db.collection('students').findOne({ _id: ObjectID(id) })
+            person = await db.collection('students').findOne({ _id: ObjectID(id) })
         } catch(err) {
             errorHandler(err)
         }
-        return student
+        return person
     }
 }

@@ -21,5 +21,11 @@ module.exports = {
             }
             return peopleData
         }
+    },
+    Person: {
+        __resolveType: (person, context, info) => {
+            if(person.phone) return "Monitor"
+            else return "Student"
+        }
     }
 }

@@ -51,43 +51,43 @@ module.exports ={
         }
         return course
     },
-    createStudent: async (_, { input }) => {
-        let db, student
+    createPerson: async (_, { input }) => {
+        let db, person
         try {
             db = await connectDb()
-            student = await db.collection('students').insertOne(input)
-            input._id = student.insertedId
+            person = await db.collection('students').insertOne(input)
+            input._id = person.insertedId
         } catch(err) {
             errorHandler(err)
         }
         return input
     },
-    editStudent: async (_, { _id, input }) => {
-        let db, student
+    editPerson: async (_, { _id, input }) => {
+        let db, person
         try {
             db = await connectDb()
             await db.collection('students').updateOne(
                 { _id: ObjectID(_id) },
                 { $set: input }
             )
-            student = await db.collection('students').findOne(
+            person = await db.collection('students').findOne(
                 { _id: ObjectID(_id) }
             )
         } catch(err) {
             errorHandler(err)
         }
-        return student
+        return person
     },
-    deleteStudent: async (_, { _id }) => {
-        let student
+    deletePerson: async (_, { _id }) => {
+        let person
         try {
             const db = await connectDb()
-            student = await db.collection('students').findOne({ _id: ObjectID(_id) })
+            person = await db.collection('students').findOne({ _id: ObjectID(_id) })
             await db.collection('students').deleteOne({ _id: ObjectID(_id) })
         } catch(err) {
             errorHandler(err)
         }
-        return student
+        return person
     },
     addPeople: async (_, { courseId, personId }) => {
         let course
