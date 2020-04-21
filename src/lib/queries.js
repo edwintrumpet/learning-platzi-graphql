@@ -25,5 +25,27 @@ module.exports ={
             console.log(error)
         }
         return course
+    },
+    getStudents: async () => {
+        let db
+        let students = []
+        try {
+            db = await connectDb()
+            students = await db.collection('students').find().toArray()
+        } catch(err) {
+            console.log(error)
+        }
+        return students
+    },
+    getStudent: async (_, { id }) => {
+        let db
+        let student
+        try {
+            db = await connectDb()
+            student = await db.collection('students').findOne({ _id: ObjectID(id) })
+        } catch(err) {
+            console.log(error)
+        }
+        return student
     }
 }
