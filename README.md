@@ -1,8 +1,32 @@
 # Curso de GraphQL - Platzi
 
-Proyecto de aprendizaje en el Curso básico de GrahpQL de Platzi
+Proyecto de aprendizaje en el [Curso básico de GrahpQL de Platzi](https://platzi.com/clases/graphql/)
 
-## Aliases
+## Instalación
+
+```shell
+npm i
+```
+
+Para que el proyecto funcione debemos crear una base de datos y tomando como ejemplo el archivo `.develop.env` construir el archivo `.env` con los datos necesarios para que se pueda conectar a la base de datos.
+
+## Scripts
+
+- `npm run lint`: Muestra errores de estilo según el formato standard
+- `npm run lint:fix`: Corrige los errores de estilo
+- `start`: Inicia el servidor en modo de producción
+- `start:dev`: Inicia el servidor en modo de desarrollo
+
+## Funcionamiento
+
+El proyecto es una API que consulta una base de datos MongoDB por medio de GraphQL.
+Tiene como entidades Cursos, Estudiantes y Monitores con métodos automáticamente documentados por GraphQL.
+
+Al iniciarse el servidor en modo de desarrollo expone la API de GraphQL para realizar consultas de manera cómoda, pero si se inicia en modo de producción los datos solo estarán disponibles por medio de URL.
+
+## Apuntes
+
+### Aliases
 
 Ayudan a ejecutar varias queries al mismo tiempo teniendo un nombre que las identifica
 
@@ -36,7 +60,7 @@ query {
 }
 ```
 
-## Fragments
+### Fragments
 
 Ayudan a pasar parámetros que se repiten en varias consultas para no duplicar código
 
@@ -71,7 +95,7 @@ fragments defaults on Student {
 }
 ```
 
-## Variables
+### Variables
 
 Permite hacer reutilizables las consultas al ejecutarse por medio de variables que se pasan por medio de objetos JSON
 
@@ -91,13 +115,13 @@ mutation addPersonToCourse($course: ID!, $person: ID!) {
 }
 ```
 
-## Directivas
+### Directivas
 
 - include
 - skip
 - deprecated
 
-### @inlcude
+#### @inlcude
 
 Permite incluir valores de consulta si se cumple una condición
 
@@ -120,7 +144,7 @@ query getPeopleData($monitor: Boolean!) {
 }
 ```
 
-### @deprecated
+#### @deprecated
 
 Le indica al cliente que aunque un campo esté habilitado, no tendrá soporte a largo plazo
 
@@ -134,7 +158,7 @@ type Course {
 }
 ```
 
-## Clientes
+### Clientes
 
 - fetchql
 - graphql-request
@@ -144,26 +168,34 @@ type Course {
 - apollo angular
 
 
-### [FetchQL](https://www.npmjs.com/package/fetchql)
+#### [FetchQL](https://www.npmjs.com/package/fetchql)
 
 Tiene un objeto de configuración donde se introduce todas los requerimientos que necesita un query
 
-### [graphql-request](https://www.npmjs.com/package/graphql-request)
+#### [graphql-request](https://www.npmjs.com/package/graphql-request)
 
 Se puede usar tanto en node como en un aplicativo de front. Es el más sencillo de usar.
 
-### [Apollo client](https://www.npmjs.com/package/apollo-client)
+#### [Apollo client](https://www.npmjs.com/package/apollo-client)
 
 Es un cliente muy completo pues tiene los mismos usos que graphql-request, pero se puede manejar caché de query, uso de promesas, entre otros.
 
-### [Relay](https://relay.dev/)
+#### [Relay](https://relay.dev/)
 
 Es un cliente orientado a integrar el front. es usado por Facebook de manera oficial para conectar con graphql.
 
-### [Vue Apollo](https://apollo.vuejs.org/)
+#### [Vue Apollo](https://apollo.vuejs.org/)
 
 Cliente para conectar aplicaciones Vue
 
-### [Apollo Angular](https://www.apollographql.com/docs/angular/)
+#### [Apollo Angular](https://www.apollographql.com/docs/angular/)
 
 Cliente para conectar aplicaciones Angular
+
+## Autor
+
+Edwin García  
+spark.com.co@gmail.com
+
+## Licencia
+[MIT](./LICENSE)
