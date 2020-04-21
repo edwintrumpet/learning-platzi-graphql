@@ -2,6 +2,7 @@
 
 const connectDb = require('./db')
 const {ObjectID} = require('mongodb')
+const errorHandler = require('./errorHandler')
 
 module.exports ={
     createCourse: async (_, { input }) => {
@@ -19,7 +20,7 @@ module.exports ={
             course = await db.collection('courses').insertOne(newCourse)
             newCourse._id = course.insertedId
         } catch(err) {
-            console.log(err)
+            errorHandler(err)
         }
         return newCourse
     },
@@ -35,7 +36,7 @@ module.exports ={
                 { _id: ObjectID(_id) }
             )
         } catch(err) {
-            console.log(err)
+            errorHandler(err)
         }
         return course
     },
@@ -45,9 +46,8 @@ module.exports ={
             const db = await connectDb()
             course = await db.collection('courses').findOne({ _id: ObjectID(_id) })
             await db.collection('courses').deleteOne({ _id: ObjectID(_id) })
-            console.log(course)
         } catch(err) {
-            console.log(err)
+            errorHandler(err)
         }
         return course
     },
@@ -58,7 +58,7 @@ module.exports ={
             student = await db.collection('students').insertOne(input)
             input._id = student.insertedId
         } catch(err) {
-            console.log(err)
+            errorHandler(err)
         }
         return input
     },
@@ -74,7 +74,7 @@ module.exports ={
                 { _id: ObjectID(_id) }
             )
         } catch(err) {
-            console.log(err)
+            errorHandler(err)
         }
         return student
     },
@@ -85,7 +85,7 @@ module.exports ={
             student = await db.collection('students').findOne({ _id: ObjectID(_id) })
             await db.collection('students').deleteOne({ _id: ObjectID(_id) })
         } catch(err) {
-            console.log(err)
+            errorHandler(err)
         }
         return student
     },
@@ -101,7 +101,7 @@ module.exports ={
                 { $addToSet: { people: ObjectID(personId) } }
             )
         } catch(err) {
-            console.log(err)
+            errorHandler(err)
         }
         return course
     }

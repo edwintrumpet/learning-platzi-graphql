@@ -2,6 +2,7 @@
 
 const connectDb = require('./db')
 const {ObjectID} = require('mongodb')
+const errorHandler = require('./errorHandler')
 
 module.exports ={
     getCourses: async () => {
@@ -11,7 +12,7 @@ module.exports ={
             db = await connectDb()
             courses = await db.collection('courses').find().toArray()
         } catch(err) {
-            console.log(error)
+            errorHandler(err)
         }
         return courses
     },
@@ -22,7 +23,7 @@ module.exports ={
             db = await connectDb()
             course = await db.collection('courses').findOne({ _id: ObjectID(id) })
         } catch(err) {
-            console.log(error)
+            errorHandler(err)
         }
         return course
     },
@@ -33,7 +34,7 @@ module.exports ={
             db = await connectDb()
             students = await db.collection('students').find().toArray()
         } catch(err) {
-            console.log(error)
+            errorHandler(err)
         }
         return students
     },
@@ -44,7 +45,7 @@ module.exports ={
             db = await connectDb()
             student = await db.collection('students').findOne({ _id: ObjectID(id) })
         } catch(err) {
-            console.log(error)
+            errorHandler(err)
         }
         return student
     }
